@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/playButton"
+            android:id="@+id/connectionButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,9 +32,9 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/marginTop"
+            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginEnd="@dimen/marginTop"
             android:text="@string/hello"
             android:textAlignment="center"
             android:textSize="34sp"
@@ -47,7 +47,7 @@
             android:id="@+id/sign_in_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/marginTop"
             android:text="@string/sign_in_account"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/title_text"
@@ -58,7 +58,7 @@
             android:id="@+id/email_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/marginTop"
             android:ems="10"
             android:hint="@string/email_address_hint"
             android:inputType="textEmailAddress"
@@ -70,10 +70,10 @@
 
         <TextView
             android:id="@+id/email_text"
-            android:layout_width="36dp"
-            android:layout_height="21dp"
+            android:layout_width="43dp"
+            android:layout_height="20dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/marginTop"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="@+id/email_editText"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_text" />
