@@ -12,4 +12,5 @@
     <string name="prenom">Prénom</string>
     <string name="nom_text">Grégoire</string>
     <string name="prenom_text">Bryan</string>
+    <string name="developer_application">Développeur de l\'application</string>
 </resources>

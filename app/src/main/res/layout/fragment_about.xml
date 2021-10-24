@@ -27,12 +27,10 @@
             style="@style/matriculeStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
             android:text="@string/matricule"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/developerText"
+            app:layout_constraintTop_toBottomOf="@+id/developerText" />
 
         <TextView
             android:id="@+id/nom"
@@ -71,6 +69,19 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintBaseline_toBaselineOf="@+id/prenom"
             app:layout_constraintStart_toStartOf="@+id/nom_text" />
+
+        <TextView
+            android:id="@+id/developerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/marginTop"
+            android:text="@string/developer_application"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
