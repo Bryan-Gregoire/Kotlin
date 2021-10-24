@@ -3,7 +3,7 @@
     <string name="about">About</string>
     <string name="hello">Connexion au compte</string>
     <string name="email">E-mail</string>
-    <string name="sign_in_account">Bievenue Connectez-vous avec votre e-mail</string>
+    <string name="sign_in_account">Bievenue ! Connectez-vous avec votre e-mail</string>
     <string name="connection">Connexion</string>
     <string name="email_address_hint">Adresse mail</string>
     <string name="matricule_text">53735</string>

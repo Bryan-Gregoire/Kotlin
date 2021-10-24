@@ -10,11 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import g53735.mobg5.myapplication.databinding.FragmentConnectionBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ConnectionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ConnectionFragment : Fragment() {
 
     override fun onCreateView(
