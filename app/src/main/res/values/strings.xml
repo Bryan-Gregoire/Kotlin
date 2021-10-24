@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">MyApplication</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">About</string>
+    <string name="hello">Connexion au compte</string>
+    <string name="email">E-mail</string>
+    <string name="sign_in_account">Bievenue Connectez-vous avec votre e-mail</string>
+    <string name="connection">Connexion</string>
+    <string name="email_address_hint">Adresse mail</string>
+    <string name="matricule_text">53735</string>
+    <string name="matricule">Matricule</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom_text">Grégoire</string>
+    <string name="prenom_text">Bryan</string>
 </resources>

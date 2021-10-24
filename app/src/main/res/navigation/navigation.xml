@@ -10,9 +10,10 @@
         android:name="g53735.mobg5.myapplication.ConnectionFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_connection" />
+
     <fragment
         android:id="@+id/aboutFragment"
         android:name="g53735.mobg5.myapplication.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 </navigation>

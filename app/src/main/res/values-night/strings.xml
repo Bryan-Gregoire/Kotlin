@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">Email</string>
+    <string name="sign_in_account">Sign in to your account</string>
+    <string name="connection">Connection</string>
+    <string name="email_address_hint">Email address</string>
+    <string name="matricule_text">53735</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom_text">Grégoire</string>
+    <string name="prenom_text">Bryan</string>
+</resources>
