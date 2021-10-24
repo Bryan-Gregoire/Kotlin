@@ -19,9 +19,8 @@
             android:layout_marginStart="16dp"
             android:text="@string/matricule_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="@+id/matricule"
-            app:layout_constraintStart_toEndOf="@+id/matricule"
-            app:layout_constraintTop_toTopOf="@+id/matricule" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/matricule"
+            app:layout_constraintStart_toEndOf="@+id/matricule" />
 
         <TextView
             android:id="@+id/matricule"
@@ -31,6 +30,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/matricule"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/nom"
-            app:layout_constraintEnd_toEndOf="@+id/matricule"
             app:layout_constraintStart_toStartOf="@+id/matricule"
             app:layout_constraintTop_toBottomOf="@+id/matricule" />
 
@@ -49,12 +48,10 @@
             android:id="@+id/nom_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:text="@string/nom_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="@+id/nom"
-            app:layout_constraintStart_toEndOf="@+id/nom"
-            app:layout_constraintTop_toTopOf="@+id/nom" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/nom"
+            app:layout_constraintStart_toStartOf="@+id/matriculeText" />
 
         <TextView
             android:id="@+id/prenom"
@@ -63,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/prenom"
-            app:layout_constraintEnd_toEndOf="@+id/nom"
             app:layout_constraintStart_toStartOf="@+id/nom"
             app:layout_constraintTop_toBottomOf="@+id/nom" />
 
@@ -71,12 +67,10 @@
             android:id="@+id/prenomText"
             android:layout_width="40dp"
             android:layout_height="21dp"
-            android:layout_marginStart="16dp"
             android:text="@string/prenom_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="@+id/prenom"
-            app:layout_constraintStart_toEndOf="@+id/prenom"
-            app:layout_constraintTop_toTopOf="@+id/prenom" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/prenom"
+            app:layout_constraintStart_toStartOf="@+id/nom_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

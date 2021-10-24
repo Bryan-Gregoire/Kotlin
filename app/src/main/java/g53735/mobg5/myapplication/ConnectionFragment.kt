@@ -23,13 +23,15 @@ class ConnectionFragment : Fragment() {
             false
         )
 
-        binding.connectionButton.setOnClickListener { isValidEmail(binding.emailEditText.text.toString())}
+        binding.connectionButton.setOnClickListener {
+            isValidEmail(binding.emailEditText.text.toString())
+        }
 
         return binding.root
     }
 
-    private fun isValidEmail(email : String) {
-        if(!EMAIL_ADDRESS.matcher(email).matches()) {
+    private fun isValidEmail(email: String) {
+        if (!EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(context, "Email invalide", Toast.LENGTH_SHORT).show()
         }
     }
