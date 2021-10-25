@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import g53735.mobg5.myapplication.databinding.FragmentConnectionBinding
@@ -36,14 +37,25 @@ class ConnectionFragment : Fragment() {
 
     private fun isValidEmail(email: String) {
         if (!EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(context, "Email invalide", Toast.LENGTH_SHORT).show()
+            displayToast("Email invalide", "red")
         } else {
-            Toast.makeText(context, "Email valide", Toast.LENGTH_SHORT).show()
+            displayToast("Email valide", "green")
         }
         val inputMethodManager =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE)
                     as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(binding.connectionButton.windowToken, 0)
         binding.emailEditText.clearFocus()
+    }
+
+    private fun displayToast(message: String, color: String) {
+        Toast.makeText(
+            context,
+            HtmlCompat.fromHtml(
+                "<font color='$color'> <b> $message </b> </font> ",
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            ),
+            Toast.LENGTH_LONG
+        ).show()
     }
 }
