@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [Login::class], version = 1, exportSchema = false)
-abstract class LoginDatabase : RoomDatabase(), LoginDatabaseDao {
+abstract class LoginDatabase : RoomDatabase() {
 
     abstract val loginDatabaseDao: LoginDatabaseDao
 

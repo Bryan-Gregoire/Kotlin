@@ -12,5 +12,5 @@ data class Login(
     var email: String = "",
 
     @ColumnInfo()
-    var save_date: LocalDateTime = LocalDateTime.now(),
+    var save_date: String = LocalDateTime.now().toString(),
 )
