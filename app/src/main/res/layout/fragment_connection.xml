@@ -3,7 +3,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="g53735.mobg5.myapplication.ConnectionFragment">
+    tools:context="g53735.mobg5.myapplication.connection.ConnectionFragment">
+
+    <data>
+        <variable
+            name="connectionViewModel"
+            type="g53735.mobg5.myapplication.connection.ConnectionViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleConstraint"
@@ -22,6 +28,7 @@
             android:paddingEnd="@dimen/button_padding"
             android:text="@string/connection"
             android:textStyle="bold"
+            android:onClick="@{() -> connectionViewModel.onConnection()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -13,8 +13,8 @@ import g53735.mobg5.myapplication.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModelFactory: HomeViewModelFactory
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var homeViewModelFactory: HomeViewModelFactory
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,12 +30,12 @@ class HomeFragment : Fragment() {
             false
         )
 
-        viewModelFactory =
+        homeViewModelFactory =
             HomeViewModelFactory(HomeFragmentArgs.fromBundle(requireArguments()).emailLogin)
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
 
-        binding.homeViewModel = viewModel
+        binding.homeViewModel = homeViewModel
 
         return binding.root
     }

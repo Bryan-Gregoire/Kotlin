@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication
+package g53735.mobg5.myapplication.connection
 
 import android.content.Context
 import android.os.Bundle
@@ -11,33 +11,47 @@ import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import g53735.mobg5.myapplication.R
 import g53735.mobg5.myapplication.databinding.FragmentConnectionBinding
 
 class ConnectionFragment : Fragment() {
 
     private lateinit var binding: FragmentConnectionBinding
 
+    private lateinit var connectionViewModel: ConnectionViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<FragmentConnectionBinding>(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_connection,
             container,
             false
         )
 
-        binding.connectionButton.setOnClickListener {
-            isValidEmail(binding.emailEditText.text.toString())
-        }
+        connectionViewModel = ViewModelProvider(this).get(ConnectionViewModel::class.java)
+
+        connectionViewModel.eventConnection.observe(
+            viewLifecycleOwner, { tryConnection -> if(tryConnection) tryToLogIn() })
+
+        binding.connectionViewModel = connectionViewModel
+
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }
 
-    private fun isValidEmail(email: String) {
-        if (!EMAIL_ADDRESS.matcher(email).matches()) {
+    private fun tryToLogIn() {
+        isValidEmail()
+        connectionViewModel.onConnectionComplete()
+    }
+
+    private fun isValidEmail() {
+        if (!EMAIL_ADDRESS.matcher(binding.emailEditText.text.toString()).matches()) {
             displayToast("Email invalide", "red")
         } else {
             displayToast("Email valide", "green")
@@ -62,8 +76,7 @@ class ConnectionFragment : Fragment() {
             HtmlCompat.fromHtml(
                 "<font color='$color'> <b> $message </b> </font> ",
                 HtmlCompat.FROM_HTML_MODE_LEGACY
-            ),
-            Toast.LENGTH_LONG
+            ), Toast.LENGTH_LONG
         ).show()
     }
 }
