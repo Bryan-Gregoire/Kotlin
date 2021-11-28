@@ -15,7 +15,7 @@ class HomeViewModel(loginEmail: String, application: Application) : AndroidViewM
     val email: LiveData<String>
         get() = _email
 
-    private lateinit var userRepository: UserRepository
+    private var userRepository: UserRepository
 
     init {
         val userDao = UserDatabase.getInstance(application).userDatabaseDao

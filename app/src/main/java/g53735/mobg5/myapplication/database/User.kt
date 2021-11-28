@@ -8,9 +8,9 @@ import java.time.LocalDateTime
 @Entity(tableName = "user_login")
 data class User(
 
-    @PrimaryKey()
+    @PrimaryKey
     var email: String = "",
 
-    @ColumnInfo()
+    @ColumnInfo
     var save_date: String = LocalDateTime.now().toString(),
 )

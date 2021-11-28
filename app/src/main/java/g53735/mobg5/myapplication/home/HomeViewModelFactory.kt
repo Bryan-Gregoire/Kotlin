@@ -1,7 +1,6 @@
 package g53735.mobg5.myapplication.home
 
 import android.app.Application
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
