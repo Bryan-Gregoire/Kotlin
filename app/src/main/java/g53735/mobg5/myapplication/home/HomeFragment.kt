@@ -1,5 +1,6 @@
 package g53735.mobg5.myapplication.home
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,7 @@ class HomeFragment : Fragment() {
         )
 
         homeViewModelFactory =
-            HomeViewModelFactory(HomeFragmentArgs.fromBundle(requireArguments()).emailLogin)
+            HomeViewModelFactory(HomeFragmentArgs.fromBundle(requireArguments()).emailLogin, requireActivity().application)
 
         homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
 

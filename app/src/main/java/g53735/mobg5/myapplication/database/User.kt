@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
 @Entity(tableName = "user_login")
-data class Login(
+data class User(
 
     @PrimaryKey()
     var email: String = "",
