@@ -13,8 +13,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import g53735.mobg5.myapplication.R
 import g53735.mobg5.myapplication.databinding.FragmentConnectionBinding
+
+import android.widget.ArrayAdapter
+
+
+
 
 class ConnectionFragment : Fragment() {
 
@@ -28,7 +32,7 @@ class ConnectionFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_connection,
+            g53735.mobg5.myapplication.R.layout.fragment_connection,
             container,
             false
         )
@@ -41,6 +45,19 @@ class ConnectionFragment : Fragment() {
         binding.connectionViewModel = connectionViewModel
 
         binding.lifecycleOwner = viewLifecycleOwner
+
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_dropdown_item_1line
+        )
+
+        adapter.addAll(connectionViewModel.getAllUsers().toString())
+        binding.emailEditText.setAdapter(adapter)
+
+        connectionViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
+            adapter.clear()
+            adapter.addAll(users.groupBy { it.email }.keys)
+        }
 
         return binding.root
     }

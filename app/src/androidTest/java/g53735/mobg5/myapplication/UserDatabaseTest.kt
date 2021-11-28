@@ -1,7 +1,5 @@
 package g53735.mobg5.myapplication
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

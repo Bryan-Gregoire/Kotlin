@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="@+id/title_text"
             app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
-        <EditText
+        <g53735.mobg5.myapplication.connection.InstantAutoComplete
             android:id="@+id/email_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import g53735.mobg5.myapplication.database.User
 import g53735.mobg5.myapplication.database.UserDatabase
-import g53735.mobg5.myapplication.database.UserDatabaseDao
 import g53735.mobg5.myapplication.database.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,9 +23,9 @@ class HomeViewModel(loginEmail: String, application: Application) : AndroidViewM
         _email.value = loginEmail
         addUser(User("${_email.value}"))
 
-        userRepository.getAllUsers().observeForever() { users ->
+        userRepository.getAllUsers().observeForever { users ->
             Log.i("HomeViewModel", "Je get all ")
-            users.forEach() {
+            users.forEach {
                 Log.i("HomeViewModel", it.email)
             }
         }

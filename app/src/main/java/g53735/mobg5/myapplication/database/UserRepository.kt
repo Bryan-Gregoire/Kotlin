@@ -6,7 +6,7 @@ class UserRepository(private val userDatabaseDao: UserDatabaseDao) {
 
     fun getUser(key: String): User? = userDatabaseDao.getUser(key)
 
-    fun addUser(user: User): Unit {
+    fun addUser(user: User) {
         if(userDatabaseDao.getUser(user.email) == null ) {
             userDatabaseDao.insert(user)
         } else {
