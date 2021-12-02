@@ -13,7 +13,7 @@ L'application conserve une liste de cryptos. Ces cryptos sont persistés dans la
 
 ## Service rest
 
-Pour collecter les données relatives aux films, des appels au service rest suivant sont effectués : https://coinmarketcap.com/api/documentation/v1/
+Pour collecter les données relatives aux cryptos, des appels au service rest suivant sont effectués : https://coinmarketcap.com/api/documentation/v1/
 
 ## Auteur
 
