@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.database
+package g53735.mobg5.cryptop.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

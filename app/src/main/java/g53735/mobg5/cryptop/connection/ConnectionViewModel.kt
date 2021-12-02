@@ -1,12 +1,12 @@
-package g53735.mobg5.myapplication.connection
+package g53735.mobg5.cryptop.connection
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import g53735.mobg5.myapplication.database.User
-import g53735.mobg5.myapplication.database.UserDatabase
-import g53735.mobg5.myapplication.database.UserRepository
+import g53735.mobg5.cryptop.database.User
+import g53735.mobg5.cryptop.database.UserDatabase
+import g53735.mobg5.cryptop.database.UserRepository
 
 class ConnectionViewModel(application: Application) : AndroidViewModel(application) {
 

@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.database
+package g53735.mobg5.cryptop.database
 
 import android.content.Context
 import androidx.room.Database

@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication
+package g53735.mobg5.cryptop
 
 import org.junit.Test
 

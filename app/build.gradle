@@ -9,7 +9,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "g53735.mobg5.myapplication"
+        applicationId "g53735.mobg5.cryptop"
         minSdk 26
         targetSdk 31
         versionCode 1

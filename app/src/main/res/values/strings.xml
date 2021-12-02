@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApplication</string>
+    <string name="app_name">Cryptop</string>
     <string name="about">About</string>
     <string name="hello">Connexion au compte</string>
     <string name="email">E-mail</string>

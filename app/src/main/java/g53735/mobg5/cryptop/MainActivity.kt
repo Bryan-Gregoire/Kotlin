@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication
+package g53735.mobg5.cryptop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import g53735.mobg5.myapplication.databinding.ActivityMainBinding
+import g53735.mobg5.cryptop.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

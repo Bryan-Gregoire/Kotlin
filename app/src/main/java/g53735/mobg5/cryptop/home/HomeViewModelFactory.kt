@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.home
+package g53735.mobg5.cryptop.home
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

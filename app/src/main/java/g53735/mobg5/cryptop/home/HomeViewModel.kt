@@ -1,11 +1,11 @@
-package g53735.mobg5.myapplication.home
+package g53735.mobg5.cryptop.home
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import g53735.mobg5.myapplication.database.User
-import g53735.mobg5.myapplication.database.UserDatabase
-import g53735.mobg5.myapplication.database.UserRepository
+import g53735.mobg5.cryptop.database.User
+import g53735.mobg5.cryptop.database.UserDatabase
+import g53735.mobg5.cryptop.database.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

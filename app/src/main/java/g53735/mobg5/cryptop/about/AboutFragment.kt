@@ -1,11 +1,11 @@
-package g53735.mobg5.myapplication.about
+package g53735.mobg5.cryptop.about
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import g53735.mobg5.myapplication.R
+import g53735.mobg5.cryptop.R
 
 class AboutFragment : Fragment() {
 

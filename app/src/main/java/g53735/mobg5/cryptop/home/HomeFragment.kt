@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.home
+package g53735.mobg5.cryptop.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import g53735.mobg5.myapplication.R
-import g53735.mobg5.myapplication.databinding.FragmentHomeBinding
+import g53735.mobg5.cryptop.R
+import g53735.mobg5.cryptop.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 

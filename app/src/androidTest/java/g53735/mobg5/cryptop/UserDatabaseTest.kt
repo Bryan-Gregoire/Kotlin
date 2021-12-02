@@ -1,11 +1,11 @@
-package g53735.mobg5.myapplication
+package g53735.mobg5.cryptop
 
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import g53735.mobg5.myapplication.database.User
-import g53735.mobg5.myapplication.database.UserDatabase
-import g53735.mobg5.myapplication.database.UserDatabaseDao
+import g53735.mobg5.cryptop.database.User
+import g53735.mobg5.cryptop.database.UserDatabase
+import g53735.mobg5.cryptop.database.UserDatabaseDao
 import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before

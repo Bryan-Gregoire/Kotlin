@@ -7,7 +7,7 @@
     <data>
         <variable
             name="homeViewModel"
-            type="g53735.mobg5.myapplication.home.HomeViewModel" />
+            type="g53735.mobg5.cryptop.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

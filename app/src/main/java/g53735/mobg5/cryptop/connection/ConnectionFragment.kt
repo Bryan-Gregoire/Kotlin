@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.connection
+package g53735.mobg5.cryptop.connection
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import g53735.mobg5.myapplication.databinding.FragmentConnectionBinding
+import g53735.mobg5.cryptop.databinding.FragmentConnectionBinding
 
 import android.widget.ArrayAdapter
 
@@ -32,7 +32,7 @@ class ConnectionFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            g53735.mobg5.myapplication.R.layout.fragment_connection,
+            g53735.mobg5.cryptop.R.layout.fragment_connection,
             container,
             false
         )

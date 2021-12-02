@@ -1,4 +1,4 @@
-package g53735.mobg5.myapplication.connection
+package g53735.mobg5.cryptop.connection
 
 import android.content.Context
 import android.graphics.Rect
