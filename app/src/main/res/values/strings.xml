@@ -14,4 +14,5 @@
     <string name="prenom_text">Bryan</string>
     <string name="developer_application">Développeur de l\'application</string>
     <string name="mail_format">email : %s</string>
+    <string name="slogan">Cryptop, le top des Cryptos</string>
 </resources>

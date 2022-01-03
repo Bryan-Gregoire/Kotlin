@@ -84,5 +84,21 @@
             app:layout_constraintStart_toStartOf="@+id/email_editText"
             app:layout_constraintTop_toBottomOf="@+id/sign_in_text" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/chocolate"
+            android:text="@string/slogan"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/slogan" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
