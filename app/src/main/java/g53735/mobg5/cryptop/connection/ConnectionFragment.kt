@@ -7,17 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
+import g53735.mobg5.cryptop.R
+import g53735.mobg5.cryptop.database.UserDatabase
 import g53735.mobg5.cryptop.databinding.FragmentConnectionBinding
-
-import android.widget.ArrayAdapter
-
-
 
 
 class ConnectionFragment : Fragment() {
@@ -31,16 +29,20 @@ class ConnectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
-            inflater,
-            g53735.mobg5.cryptop.R.layout.fragment_connection,
-            container,
+            inflater, R.layout.fragment_connection, container,
             false
         )
 
-        connectionViewModel = ViewModelProvider(this).get(ConnectionViewModel::class.java)
+        val application = requireNotNull(this.activity).application
 
-        connectionViewModel.eventConnection.observe(
-            viewLifecycleOwner, { tryConnection -> if(tryConnection) tryToLogIn() })
+        val dataUserDao = UserDatabase.getInstance(application).userDatabaseDao
+        val connectionViewModelFactory = ConnectionViewModelFactory(dataUserDao)
+
+        connectionViewModel =
+            ViewModelProvider(this, connectionViewModelFactory)
+                .get(ConnectionViewModel::class.java)
+
+        connectionViewModel.eventConnection.observe(viewLifecycleOwner, { if(it) tryToLogIn() })
 
         binding.connectionViewModel = connectionViewModel
 
@@ -68,10 +70,12 @@ class ConnectionFragment : Fragment() {
     }
 
     private fun isValidEmail() {
-        if (!EMAIL_ADDRESS.matcher(binding.emailEditText.text.toString()).matches()) {
+        val email = binding.emailEditText.text.toString()
+        if (!EMAIL_ADDRESS.matcher(email).matches()) {
             displayToast("Email invalide", "red")
         } else {
             displayToast("Email valide", "green")
+            connectionViewModel.addUser(email)
         }
         val inputMethodManager =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE)

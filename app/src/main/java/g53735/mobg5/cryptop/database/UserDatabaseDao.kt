@@ -10,13 +10,13 @@ import androidx.room.Update
 interface UserDatabaseDao {
 
     @Insert
-    fun insert(user: User)
+    suspend fun insert(user: User)
 
     @Update
-    fun update(user: User)
+    suspend fun update(user: User)
 
     @Query("SELECT * FROM user_login WHERE email = :key")
-    fun getUser(key: String): User?
+    suspend fun getUser(key: String): User?
 
     @Query("SELECT * FROM user_login")
     fun getAllUsers(): LiveData<List<User>>
