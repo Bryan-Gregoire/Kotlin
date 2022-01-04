@@ -15,6 +15,11 @@ class ConnectionViewModel(dataUserDao: UserDatabaseDao) : ViewModel() {
     val eventConnection: LiveData<Boolean>
         get() = _eventConnection
 
+    private val _navigateToCrypto = MutableLiveData<Boolean?>()
+
+    val navigateToCrypto: LiveData<Boolean?>
+        get() = _navigateToCrypto
+
 
     fun getAllUsers(): LiveData<List<User>> {
         return userDao.getAllUsers()
@@ -37,5 +42,11 @@ class ConnectionViewModel(dataUserDao: UserDatabaseDao) : ViewModel() {
         _eventConnection.value = false
     }
 
+    fun onConnect() {
+        _navigateToCrypto.value = true
+    }
 
+    fun doneNavigating() {
+        _navigateToCrypto.value = false
+    }
 }
