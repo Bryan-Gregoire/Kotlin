@@ -17,9 +17,6 @@ data class Crypto(
     var symbol: String,
 
     @ColumnInfo
-    var description: String,
-
-    @ColumnInfo
     var price: Double,
 
     @ColumnInfo
@@ -28,11 +25,14 @@ data class Crypto(
     @ColumnInfo(name = "market_cap")
     var marketCap: Double,
 
-    @ColumnInfo(name = "market_cap_dominance_percentage")
-    var marketCapDominance: Double,
+    @ColumnInfo(name = "max_supply")
+    var maxSupply: Long,
 
     @ColumnInfo(name = "circulating_supply")
-    var circulatingSupply: Double,
+    var circulatingSupply: Long,
+
+    @ColumnInfo(name = "total_supply")
+    var totalSupply: Long,
 
     @ColumnInfo(name = "volume_24h")
     var volume: Double,
@@ -40,7 +40,13 @@ data class Crypto(
     @ColumnInfo(name = "price_change_percentage_24h")
     var priceChange: Double,
 
-    @ColumnInfo(name = "logo_url")
+    @ColumnInfo
+    var category: String,  // MISS
+
+    @ColumnInfo
+    var description: String, // MISS
+
+    @ColumnInfo(name = "logo_url") // MISS
     var logo: String,
 
     @ColumnInfo
