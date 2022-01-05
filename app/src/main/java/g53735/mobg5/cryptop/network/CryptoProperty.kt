@@ -31,18 +31,3 @@ data class Currency(
 )
 
 
-// Metadata
-
-//data class CryptosMetadata(
-//    val data: CryptoIds
-//)
-//
-//data class CryptoIds(
-//    @Json(name = "1") val id: Metadatas
-//)
-//
-//data class Metadatas(
-//    val logo : String,
-//    val description: String,
-//    val category: String,
-//)

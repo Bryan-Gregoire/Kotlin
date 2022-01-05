@@ -9,19 +9,21 @@ import g53735.mobg5.cryptop.database.CryptoDatabaseDao
 import g53735.mobg5.cryptop.network.CryptoAPI
 import kotlinx.coroutines.launch
 
+enum class CryptoApiStatus {LOADING, ERROR, DONE}
+
 class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
     val daoCrypto = dataDaoCrypto
 
     val cryptos = daoCrypto.getTop100Cryptos()
 
-    private val _response = MutableLiveData<String>()
+    private val _status = MutableLiveData<CryptoApiStatus>()
 
-    // The external immutable LiveData for the response String
-    val response: LiveData<String>
-        get() = _response
+    val status: LiveData<CryptoApiStatus>
+        get() = _status
 
     private val _navigateToCryptoDetail = MutableLiveData<Long>()
+
     val navigateToSleepDetail
         get() = _navigateToCryptoDetail
 
@@ -39,6 +41,7 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
     private fun getCryptoProperties() {
         viewModelScope.launch {
+            _status.value = CryptoApiStatus.LOADING
             try {
                 daoCrypto.clear()
 
@@ -66,9 +69,9 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
                 }
 
                 daoCrypto.insert(cryptosList)
-
+                _status.value = CryptoApiStatus.DONE
             } catch (e: Exception) {
-                _response.value = "Failure: ${e.message}"
+                _status.value = CryptoApiStatus.ERROR
             }
         }
     }
