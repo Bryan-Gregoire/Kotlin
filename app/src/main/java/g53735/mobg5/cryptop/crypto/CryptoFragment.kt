@@ -1,9 +1,7 @@
 package g53735.mobg5.cryptop.crypto
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +13,7 @@ import g53735.mobg5.cryptop.databinding.FragmentCryptoBinding
 
 class CryptoFragment : Fragment() {
 
+    private lateinit var cryptoViewModel: CryptoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,14 +23,17 @@ class CryptoFragment : Fragment() {
         val binding: FragmentCryptoBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_crypto, container, false)
 
+        binding.lifecycleOwner = viewLifecycleOwner
+
         val application = requireNotNull(this.activity).application
 
         val cryptoDao = CryptoDatabase.getInstance(application).cryptoDatabaseDao
         val viewModelFactory = CryptoViewModelFactory(cryptoDao)
 
-        val cryptoViewModel = ViewModelProvider(this, viewModelFactory).get(CryptoViewModel::class.java)
+        cryptoViewModel = ViewModelProvider(this, viewModelFactory).get(CryptoViewModel::class.java)
 
         binding.cryptoViewModel = cryptoViewModel
+
 
         val adapter = CryptoAdapter(CryptoListener { cryptoId ->
             cryptoViewModel.onCryptoClicked(cryptoId)
@@ -44,8 +46,6 @@ class CryptoFragment : Fragment() {
             }
         })
 
-        binding.lifecycleOwner = viewLifecycleOwner
-
         val manager = GridLayoutManager(activity, 3)
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int = when (position) {
@@ -56,6 +56,26 @@ class CryptoFragment : Fragment() {
 
         binding.cryptoList.layoutManager = manager
 
+        cryptoViewModel.updateLimit(CryptoDatabaseLimit.SHOW_TOP_100)
+
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        cryptoViewModel.updateLimit(
+            when (item.itemId) {
+                R.id.show_top_100 -> CryptoDatabaseLimit.SHOW_TOP_100
+                R.id.show_top_200 -> CryptoDatabaseLimit.SHOW_TOP_200
+                R.id.show_top_500 -> CryptoDatabaseLimit.SHOW_TOP_500
+                else -> CryptoDatabaseLimit.SHOW_TOP_100
+            }
+        )
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.crypto_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

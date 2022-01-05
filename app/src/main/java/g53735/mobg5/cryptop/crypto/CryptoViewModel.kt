@@ -1,5 +1,6 @@
 package g53735.mobg5.cryptop.crypto
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,13 +10,22 @@ import g53735.mobg5.cryptop.database.CryptoDatabaseDao
 import g53735.mobg5.cryptop.network.CryptoAPI
 import kotlinx.coroutines.launch
 
-enum class CryptoApiStatus {LOADING, ERROR, DONE}
+enum class CryptoApiStatus { LOADING, ERROR, DONE }
+
+enum class CryptoDatabaseLimit(val value: Int) {
+    SHOW_TOP_100(100),
+    SHOW_TOP_200(200),
+    SHOW_TOP_500(500)
+}
 
 class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
     val daoCrypto = dataDaoCrypto
 
-    val cryptos = daoCrypto.getTop100Cryptos()
+    private val _cryptos = MutableLiveData<List<Crypto>>()
+
+    val cryptos: LiveData<List<Crypto>>
+        get() = _cryptos
 
     private val _status = MutableLiveData<CryptoApiStatus>()
 
@@ -29,6 +39,7 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
     init {
         getCryptoProperties()
+        getCryptoTop(CryptoDatabaseLimit.SHOW_TOP_100)
     }
 
     fun onCryptoClicked(id: Long) {
@@ -40,15 +51,16 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
     }
 
     private fun getCryptoProperties() {
+
         viewModelScope.launch {
             _status.value = CryptoApiStatus.LOADING
             try {
                 daoCrypto.clear()
 
-                val cryptoResult = CryptoAPI.retrofitService.getProperties(500, "USD")
+                val cryptoResult = CryptoAPI.retrofitService.getProperties(5000, "USD")
                 var cryptosList = mutableListOf<Crypto>()
 
-                var ind : Long = 0
+                var ind: Long = 0
                 cryptoResult.data!!.forEach { data ->
                     val name: String = data.name
                     val symbol: String = data.symbol
@@ -62,8 +74,10 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
                     val priceChange: Double? = data.quote.usd.priceChangePercentage
                     val volume: Double? = data.quote.usd.volume_24h
 
-                    val crypto = Crypto(ind, cmcId, name, symbol, price, rank, marketCap,
-                        maxSupply,circulatingSupply, totalSupply, volume, priceChange)
+                    val crypto = Crypto(
+                        ind, cmcId, name, symbol, price, rank, marketCap,
+                        maxSupply, circulatingSupply, totalSupply, volume, priceChange
+                    )
                     cryptosList.add(crypto)
                     ind++
                 }
@@ -74,5 +88,15 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
                 _status.value = CryptoApiStatus.ERROR
             }
         }
+    }
+
+    private fun getCryptoTop(limit: CryptoDatabaseLimit) {
+        viewModelScope.launch {
+            _cryptos.value = daoCrypto.getTopCryptos(limit.value)
+        }
+    }
+
+    fun updateLimit(limit: CryptoDatabaseLimit) {
+        getCryptoTop(limit)
     }
 }

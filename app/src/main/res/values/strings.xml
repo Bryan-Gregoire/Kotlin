@@ -16,4 +16,7 @@
     <string name="mail_format">email : %s</string>
     <string name="slogan">Cryptop, le top des Cryptos</string>
     <string name="header_text">Cryptocurrencies</string>
+    <string name="top_500">Top 500</string>
+    <string name="top_200">Top 200</string>
+    <string name="top_100">Top 100</string>
 </resources>
