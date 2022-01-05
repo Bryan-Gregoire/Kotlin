@@ -15,6 +15,20 @@ fun TextView.setCryptoNameString(item: Crypto?) {
     }
 }
 
+@BindingAdapter("cryptoSymbolString")
+fun TextView.setCryptoSymbolString(item: Crypto?) {
+    item?.let {
+        text = item.symbol
+    }
+}
+
+@BindingAdapter("cryptoRankString")
+fun TextView.setCryptoRankString(item: Crypto?) {
+    item?.let {
+        text = item.rank.toString()
+    }
+}
+
 @BindingAdapter("cryptoApiStatus")
 fun bindStatus(statusImageView: ImageView, status: CryptoApiStatus) {
     when (status) {
@@ -31,3 +45,4 @@ fun bindStatus(statusImageView: ImageView, status: CryptoApiStatus) {
         }
     }
 }
+

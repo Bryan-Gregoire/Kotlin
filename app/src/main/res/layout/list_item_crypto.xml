@@ -34,17 +34,41 @@
         android:layout_height="wrap_content"
         android:onClick="@{() -> clickListener.onClick(crypto)}">
 
+
+        <TextView
+            android:id="@+id/crypto_symbol"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            app:cryptoSymbolString="@{crypto}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crypto_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BTC" />
+
         <TextView
             android:id="@+id/crypto_name"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:textAlignment="center"
             app:cryptoNameString="@{crypto}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/crypto_symbol"
+            app:layout_constraintTop_toBottomOf="@+id/crypto_symbol"
             tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/crypto_rank"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            app:cryptoRankString="@{crypto}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/crypto_name"
+            app:layout_constraintTop_toBottomOf="@+id/crypto_name"
+            tools:text="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
