@@ -39,4 +39,10 @@ abstract class CryptoDatabaseDao : BaseDao<Crypto> {
 
     @Query("SELECT * FROM crypto_table")
     abstract fun getAllCryptos(): LiveData<List<Crypto>>
+
+    @Query("SELECT * FROM crypto_table order by rank LIMIT 100")
+    abstract fun getTop100Cryptos(): LiveData<List<Crypto>>
+
+    @Query("DELETE FROM crypto_table")
+    abstract suspend fun clear()
 }

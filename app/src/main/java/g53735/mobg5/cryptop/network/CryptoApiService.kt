@@ -32,6 +32,13 @@ interface CryptoApiService {
         @Query("limit") limit: Int,
         @Query("convert") convert: String
     ): CryptosData
+//
+//    @Headers(
+//        "$METHOD: $API_KEY",
+//        "Accept: application/json"
+//    )
+//    @GET("v1/cryptocurrency/info")
+//    suspend fun getMetadata(@Query("id") id: String): CryptosMetadata
 }
 
 object CryptoAPI {

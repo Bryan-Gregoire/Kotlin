@@ -7,8 +7,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "crypto_table")
 data class Crypto(
 
-    @PrimaryKey(autoGenerate = true)
-    var cryptoId: Long = 0L,
+    @PrimaryKey()
+    var cryptoId: Long,
+
+    @ColumnInfo
+    var coinMarketCapId: Int,
 
     @ColumnInfo
     var name: String,
@@ -17,38 +20,40 @@ data class Crypto(
     var symbol: String,
 
     @ColumnInfo
-    var price: Double,
+    var price: Double?,
 
     @ColumnInfo
     var rank: Int,
 
     @ColumnInfo(name = "market_cap")
-    var marketCap: Double,
+    var marketCap: Double?,
 
     @ColumnInfo(name = "max_supply")
-    var maxSupply: Long,
+    var maxSupply: Double?,
 
     @ColumnInfo(name = "circulating_supply")
-    var circulatingSupply: Long,
+    var circulatingSupply: Double?,
 
     @ColumnInfo(name = "total_supply")
-    var totalSupply: Long,
+    var totalSupply: Double?,
 
     @ColumnInfo(name = "volume_24h")
-    var volume: Double,
+    var volume: Double?,
 
     @ColumnInfo(name = "price_change_percentage_24h")
-    var priceChange: Double,
-
-    @ColumnInfo
-    var category: String,  // MISS
-
-    @ColumnInfo
-    var description: String, // MISS
-
-    @ColumnInfo(name = "logo_url") // MISS
-    var logo: String,
+    var priceChange: Double?,
 
     @ColumnInfo
     var favorite: Boolean = false
+
+//    @ColumnInfo
+//    var category: String,  // MISS
+//
+//    @ColumnInfo
+//    var description: String, // MISS
+//
+//    @ColumnInfo(name = "logo_url") // MISS
+//    var logo: String,
+
+
     )
