@@ -1,5 +1,6 @@
 package g53735.mobg5.cryptop.crypto
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
@@ -52,7 +53,7 @@ fun TextView.setCryptoRankString(item: Crypto?) {
 @BindingAdapter("cryptoPriceString")
 fun TextView.setCryptoPriceString(item: Crypto?) {
     item?.let {
-        text = item.price.toString()
+        text = context.getString(R.string.display_price, item.price)
     }
 }
 
@@ -99,6 +100,11 @@ fun TextView.setCryptoVolumeString(item: Crypto?) {
 @BindingAdapter("cryptoPriceChangeString")
 fun TextView.setPriceChangeString(item: Crypto?) {
     item?.let {
-        text = item.priceChange.toString()
+        text = context.getString(R.string.display_percentage, "%", item.priceChange)
+        if(it.priceChange!! < 0) {
+            setTextColor(Color.RED)
+        } else if(it.priceChange!! > 0) {
+            setTextColor(Color.GREEN)
+        }
     }
 }

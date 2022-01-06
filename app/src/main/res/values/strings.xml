@@ -28,4 +28,6 @@
     <string name="max_supply">Max Supply :</string>
     <string name="market_cap">Market Cap :</string>
     <string name="price">Price :</string>
+    <string name="display_price">$%,.0f</string>
+    <string name="display_percentage">%2$f %1$s</string>
 </resources>
