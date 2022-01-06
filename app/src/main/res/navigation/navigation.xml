@@ -25,6 +25,19 @@
     <fragment
         android:id="@+id/cryptoFragment"
         android:name="g53735.mobg5.cryptop.crypto.CryptoFragment"
-        android:label="Crypto" />
+        android:label="Crypto" >
+        <action
+            android:id="@+id/action_cryptoFragment_to_cryptoDetailFragment"
+            app:destination="@id/cryptoDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cryptoDetailFragment"
+        android:name="g53735.mobg5.cryptop.detail.CryptoDetailFragment"
+        android:label="Detail Crypto">
+            <argument
+                android:name="cryptoKey"
+                app:argType="long" />
+    </fragment>
 
 </navigation>

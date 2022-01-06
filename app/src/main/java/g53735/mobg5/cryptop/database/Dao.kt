@@ -36,7 +36,7 @@ abstract class UserDatabaseDao : BaseDao<User> {
 abstract class CryptoDatabaseDao : BaseDao<Crypto> {
 
     @Query("SELECT * FROM crypto_table WHERE cryptoId = :key")
-    abstract suspend fun getCrypto(key: Long): Crypto?
+    abstract fun getCrypto(key: Long): LiveData<Crypto>
 
     @Query("SELECT * FROM crypto_table")
     abstract fun getAllCryptos(): LiveData<List<Crypto>>

@@ -15,8 +15,17 @@
     <string name="developer_application">Développeur de l\'application</string>
     <string name="mail_format">email : %s</string>
     <string name="slogan">Cryptop, le top des Cryptos</string>
-    <string name="header_text">Cryptocurrencies</string>
+    <string name="header_text">Crypto Currencies</string>
     <string name="top_500">Top 500</string>
     <string name="top_200">Top 200</string>
     <string name="top_100">Top 100</string>
+    <string name="symbol">Symbol :</string>
+    <string name="rank">Market Rank :</string>
+    <string name="price_change_24h">Price change 24h :</string>
+    <string name="volume_24h">Volume 24h :</string>
+    <string name="total_supply">Total Supply :</string>
+    <string name="circulating_supply">Circulating Supply :</string>
+    <string name="max_supply">Max Supply :</string>
+    <string name="market_cap">Market Cap :</string>
+    <string name="price">Price :</string>
 </resources>
