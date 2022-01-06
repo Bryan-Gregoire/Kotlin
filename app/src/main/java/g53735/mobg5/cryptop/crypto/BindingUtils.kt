@@ -60,7 +60,7 @@ fun TextView.setCryptoPriceString(item: Crypto?) {
 @BindingAdapter("cryptoMarketCapString")
 fun TextView.setMarketCapString(item: Crypto?) {
     item?.let {
-        text = item.marketCap.toString()
+        text = String.format("$%,.0f", item.marketCap)
     }
 }
 
@@ -70,7 +70,7 @@ fun TextView.setCryptoMaxSupplyString(item: Crypto?) {
         if(it.maxSupply == null) {
             text = "--"
         } else {
-            text = item.maxSupply.toString()
+            text = String.format("%,.0f ${it.symbol}", item.maxSupply)
         }
     }
 }
@@ -78,21 +78,21 @@ fun TextView.setCryptoMaxSupplyString(item: Crypto?) {
 @BindingAdapter("cryptoCirculatingSupplyString")
 fun TextView.setCryptoCirculatingSupplyString(item: Crypto?) {
     item?.let {
-        text = item.circulatingSupply.toString()
+        text = String.format("%,.2f ${it.symbol}", item.circulatingSupply)
     }
 }
 
 @BindingAdapter("cryptoTotalSupplyString")
 fun TextView.setCryptoTotalSupplyString(item: Crypto?) {
     item?.let {
-        text = item.totalSupply.toString()
+        text = String.format("%,.0f ${it.symbol}", item.totalSupply)
     }
 }
 
 @BindingAdapter("cryptoVolumeString")
 fun TextView.setCryptoVolumeString(item: Crypto?) {
     item?.let {
-        text = item.volume.toString()
+        text =String.format("$%,.2f", item.volume)
     }
 }
 
