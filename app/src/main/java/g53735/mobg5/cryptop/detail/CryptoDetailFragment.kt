@@ -17,7 +17,7 @@ class CryptoDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding: FragmentCryptoDetailBinding = DataBindingUtil.inflate(
             inflater,
@@ -33,7 +33,7 @@ class CryptoDetailFragment : Fragment() {
             CryptoDetailViewModelFactory(arguments.cryptoKey, cryptoDao)
 
         val cryptoDetailViewModel = ViewModelProvider(this, cryptoDetailViewModelFactory
-        ).get(CryptoDetailViewModel::class.java)
+        )[CryptoDetailViewModel::class.java]
 
         binding.viewModel = cryptoDetailViewModel
 

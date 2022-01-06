@@ -14,8 +14,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private val ITEM_VIEW_TYPE_HEADER = 0
-private val ITEM_VIEW_TYPE_ITEM = 1
+private const val ITEM_VIEW_TYPE_HEADER = 0
+private const val ITEM_VIEW_TYPE_ITEM = 1
 
 class FavoriteAdapter(val clickListener: FavoriteListener) :
     ListAdapter<DataFavoriteItem, RecyclerView.ViewHolder>(CryptoFavoriteDiffCallback()) {

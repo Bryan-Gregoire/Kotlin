@@ -2,7 +2,6 @@ package g53735.mobg5.cryptop.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import g53735.mobg5.cryptop.crypto.CryptoViewModel
 import g53735.mobg5.cryptop.database.CryptoDatabaseDao
 
 class CryptoFavoriteViewModelFactory(private val dataCryptoDao: CryptoDatabaseDao) :

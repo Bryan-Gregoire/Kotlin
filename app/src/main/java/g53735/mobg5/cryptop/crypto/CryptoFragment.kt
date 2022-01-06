@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,7 +18,7 @@ class CryptoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding: FragmentCryptoBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_crypto, container, false
@@ -32,7 +31,7 @@ class CryptoFragment : Fragment() {
         val cryptoDao = CryptoDatabase.getInstance(application).cryptoDatabaseDao
         val viewModelFactory = CryptoViewModelFactory(cryptoDao)
 
-        cryptoViewModel = ViewModelProvider(this, viewModelFactory).get(CryptoViewModel::class.java)
+        cryptoViewModel = ViewModelProvider(this, viewModelFactory)[CryptoViewModel::class.java]
 
         binding.cryptoViewModel = cryptoViewModel
 
@@ -43,19 +42,19 @@ class CryptoFragment : Fragment() {
         })
         binding.cryptoList.adapter = adapter
 
-        cryptoViewModel.cryptos.observe(viewLifecycleOwner, Observer {
+        cryptoViewModel.cryptos.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.addHeaderAndSubmitList(it)
             }
         })
 
-        cryptoViewModel.cryptoFavorite.observe(viewLifecycleOwner, Observer {
+        cryptoViewModel.cryptoFavorite.observe(viewLifecycleOwner, {
             it?.let {
                 cryptoViewModel.onClickFavorite(it)
             }
         })
 
-        cryptoViewModel.navigateToCryptoDetail.observe(viewLifecycleOwner, Observer { crypto ->
+        cryptoViewModel.navigateToCryptoDetail.observe(viewLifecycleOwner, { crypto ->
             crypto?.let {
                 this.findNavController().navigate(
                     CryptoFragmentDirections
@@ -65,7 +64,7 @@ class CryptoFragment : Fragment() {
             }
         })
 
-        cryptoViewModel.navigateToFavoritesCrypto.observe(viewLifecycleOwner, Observer {
+        cryptoViewModel.navigateToFavoritesCrypto.observe(viewLifecycleOwner, {
             if (it == true) {
                 this.findNavController().navigate(
                     CryptoFragmentDirections

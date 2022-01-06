@@ -19,7 +19,7 @@ enum class CryptoDatabaseLimit(val value: Int) {
 
 class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
-    val daoCrypto = dataDaoCrypto
+    private val daoCrypto = dataDaoCrypto
 
     private val _cryptos = MutableLiveData<List<Crypto>>()
 
@@ -80,7 +80,7 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
                 daoCrypto.clear()
 
                 val cryptoResult = CryptoAPI.retrofitService.getProperties(5000, "USD")
-                var cryptosList = mutableListOf<Crypto>()
+                val cryptosList = mutableListOf<Crypto>()
 
                 var ind: Long = 0
                 cryptoResult.data!!.forEach { data ->

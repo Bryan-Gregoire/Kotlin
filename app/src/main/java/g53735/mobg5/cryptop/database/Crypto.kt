@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "crypto_table")
 data class Crypto(
 
-    @PrimaryKey()
+    @PrimaryKey
     var cryptoId: Long,
 
     @ColumnInfo

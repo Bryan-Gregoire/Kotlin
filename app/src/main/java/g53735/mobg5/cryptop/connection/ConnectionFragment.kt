@@ -29,7 +29,7 @@ class ConnectionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_connection, container,
             false
@@ -41,8 +41,7 @@ class ConnectionFragment : Fragment() {
         val connectionViewModelFactory = ConnectionViewModelFactory(dataUserDao)
 
         connectionViewModel =
-            ViewModelProvider(this, connectionViewModelFactory)
-                .get(ConnectionViewModel::class.java)
+            ViewModelProvider(this, connectionViewModelFactory)[ConnectionViewModel::class.java]
 
         connectionViewModel.eventConnection.observe(viewLifecycleOwner, { if(it) tryToLogIn() })
 
@@ -63,7 +62,7 @@ class ConnectionFragment : Fragment() {
             adapter.addAll(users.groupBy { it.email }.keys)
         }
 
-        connectionViewModel.navigateToCrypto.observe(viewLifecycleOwner, Observer {
+        connectionViewModel.navigateToCrypto.observe(viewLifecycleOwner, {
             if(it == true) {
                 this.findNavController().navigate(
                     ConnectionFragmentDirections.actionConnectionFragmentToCryptoFragment())

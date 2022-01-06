@@ -6,13 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import g53735.mobg5.cryptop.R
-import g53735.mobg5.cryptop.crypto.CryptoAdapter
-import g53735.mobg5.cryptop.crypto.CryptoFavoriteListener
-import g53735.mobg5.cryptop.crypto.CryptoListener
 import g53735.mobg5.cryptop.database.CryptoDatabase
 import g53735.mobg5.cryptop.databinding.FragmentCryptoFavoriteBinding
 
@@ -22,7 +18,7 @@ class CryptoFavoriteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentCryptoFavoriteBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_crypto_favorite, container, false)
 
@@ -31,7 +27,7 @@ class CryptoFavoriteFragment : Fragment() {
         val viewModelFactory = CryptoFavoriteViewModelFactory(dao)
 
         val favoriteViewModel =
-            ViewModelProvider(this, viewModelFactory).get(CryptoFavoriteViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory)[CryptoFavoriteViewModel::class.java]
 
         binding.favoriteViewModel = favoriteViewModel
 
@@ -43,13 +39,13 @@ class CryptoFavoriteFragment : Fragment() {
         binding.favoriteList.adapter = adapter
 
 
-        favoriteViewModel.cryptos.observe(viewLifecycleOwner, Observer {
+        favoriteViewModel.cryptos.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.addHeaderAndSubmitList(it)
             }
         })
 
-        favoriteViewModel.navigateToCryptoDetail.observe(viewLifecycleOwner, Observer { crypto ->
+        favoriteViewModel.navigateToCryptoDetail.observe(viewLifecycleOwner, { crypto ->
             crypto?.let {
                 this.findNavController().navigate(
                     CryptoFavoriteFragmentDirections.actionCryptoFavoriteFragmentToCryptoDetailFragment(

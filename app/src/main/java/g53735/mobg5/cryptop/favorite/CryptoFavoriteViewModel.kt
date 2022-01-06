@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class CryptoFavoriteViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
-    val daoCrypto = dataDaoCrypto
+    private val daoCrypto = dataDaoCrypto
 
     private val _favorites = MutableLiveData<List<Crypto>>()
 
