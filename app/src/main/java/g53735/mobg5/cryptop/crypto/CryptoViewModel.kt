@@ -79,7 +79,7 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
             try {
                 daoCrypto.clear()
 
-                val cryptoResult = CryptoAPI.retrofitService.getProperties(500, "USD")
+                val cryptoResult = CryptoAPI.retrofitService.getProperties(5000, "USD")
                 var cryptosList = mutableListOf<Crypto>()
 
                 var ind: Long = 0
