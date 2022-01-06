@@ -21,20 +21,25 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="g53735.mobg5.cryptop.crypto.CryptoViewModel" />
+        <variable
             name="crypto"
             type="g53735.mobg5.cryptop.database.Crypto"/>
         <variable
             name="clickListener"
-            type="g53735.mobg5.cryptop.crypto.CryptoListener" />
+            type="g53735.mobg5.cryptop.crypto.CryptoListener"/>
+        <variable
+            name="favoriteListener"
+            type="g53735.mobg5.cryptop.crypto.CryptoFavoriteListener"/>
 
+        <import type="android.graphics.drawable.Drawable"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(crypto)}"
         android:background="@color/black">
-
 
         <TextView
             android:id="@+id/crypto_symbol"
@@ -43,6 +48,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textColor="@color/chocolate"
+            android:onClick="@{() -> clickListener.onClick(crypto)}"
             app:cryptoSymbolString="@{crypto}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,26 +62,40 @@
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textColor="@color/chocolate"
+            android:textStyle="bold"
+            android:paddingStart="25dp"
+            android:onClick="@{() -> clickListener.onClick(crypto)}"
             app:cryptoNameString="@{crypto}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/crypto_symbol"
+            app:layout_constraintEnd_toStartOf="@+id/favorite"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/crypto_symbol"
             tools:text="Bitcoin" />
+
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:onClick="@{() -> favoriteListener.onClickFavorite(crypto)}"
+            app:layout_constraintBottom_toBottomOf="@+id/crypto_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:setFavoriteImage="@{crypto.favorite}"
+            tools:src="@drawable/not_favorite"/>
 
         <TextView
             android:id="@+id/crypto_rank"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textColor="@color/chocolate"
+            android:textStyle="bold"
+            android:onClick="@{() -> clickListener.onClick(crypto)}"
             app:cryptoRankString="@{crypto}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/crypto_name"
             app:layout_constraintTop_toBottomOf="@+id/crypto_name"
             tools:text="1" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

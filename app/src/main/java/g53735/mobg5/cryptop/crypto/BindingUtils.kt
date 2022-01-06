@@ -1,6 +1,5 @@
 package g53735.mobg5.cryptop.crypto
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
@@ -8,7 +7,6 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import g53735.mobg5.cryptop.R
 import g53735.mobg5.cryptop.database.Crypto
-import org.w3c.dom.Text
 
 
 @BindingAdapter("cryptoApiStatus")
@@ -25,6 +23,15 @@ fun bindStatus(statusImageView: ImageView, status: CryptoApiStatus) {
         CryptoApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("setFavoriteImage")
+fun setFavoriteImage(favoriteImageView: ImageView, favorite: Boolean) {
+    if(favorite) {
+        favoriteImageView.setImageResource(R.drawable.favorite)
+    } else {
+        favoriteImageView.setImageResource(R.drawable.not_favorite)
     }
 }
 

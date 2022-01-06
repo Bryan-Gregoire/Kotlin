@@ -1,6 +1,5 @@
 package g53735.mobg5.cryptop.crypto
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,8 +33,19 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
 
     private val _navigateToCryptoDetail = MutableLiveData<Long>()
 
-    val navigateToSleepDetail
+    val navigateToCryptoDetail
         get() = _navigateToCryptoDetail
+
+    private val _navigateToFavoritesCrypto = MutableLiveData<Boolean>()
+
+    val navigateToFavoritesCrypto
+        get() = _navigateToFavoritesCrypto
+
+    private val _cryptoFavorite = MutableLiveData<Long>()
+
+    val cryptoFavorite
+        get() = _cryptoFavorite
+
 
     init {
         getCryptoProperties()
@@ -50,6 +60,18 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
         _navigateToCryptoDetail.value = null
     }
 
+    fun onGoToFavorite() {
+        _navigateToFavoritesCrypto.value = true
+    }
+
+    fun doneNavigateToFavorite() {
+        _navigateToFavoritesCrypto.value = false
+    }
+
+    fun onFavoriteClicked(id: Long) {
+        _cryptoFavorite.value = id
+    }
+
     private fun getCryptoProperties() {
 
         viewModelScope.launch {
@@ -57,7 +79,7 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
             try {
                 daoCrypto.clear()
 
-                val cryptoResult = CryptoAPI.retrofitService.getProperties(100, "USD")
+                val cryptoResult = CryptoAPI.retrofitService.getProperties(500, "USD")
                 var cryptosList = mutableListOf<Crypto>()
 
                 var ind: Long = 0
@@ -81,12 +103,19 @@ class CryptoViewModel(dataDaoCrypto: CryptoDatabaseDao) : ViewModel() {
                     cryptosList.add(crypto)
                     ind++
                 }
-
                 daoCrypto.insert(cryptosList)
                 _status.value = CryptoApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = CryptoApiStatus.ERROR
             }
+        }
+    }
+
+    fun onClickFavorite(id: Long) {
+        viewModelScope.launch {
+            _cryptos.value?.get(id.toInt())?.favorite =
+                _cryptos.value?.get(id.toInt())?.favorite != true
+            _cryptos.value?.get(id.toInt())?.let { daoCrypto.update(it) }
         }
     }
 

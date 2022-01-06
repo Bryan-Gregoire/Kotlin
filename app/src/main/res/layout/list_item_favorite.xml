@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="viewModel"
+        type="g53735.mobg5.cryptop.favorite.CryptoFavoriteViewModel" />
+    <variable
+        name="crypto"
+        type="g53735.mobg5.cryptop.database.Crypto"/>
+    <variable
+        name="clickFavoriteListener"
+        type="g53735.mobg5.cryptop.favorite.FavoriteListener"/>
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:background="@color/black"
+    android:onClick="@{() -> clickFavoriteListener.onClick(crypto)}"
+    >
+
+    <TextView
+        android:id="@+id/crypto_symbol"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/chocolate"
+        android:textStyle="bold"
+        app:cryptoSymbolString="@{crypto}"
+        app:layout_constraintBaseline_toBaselineOf="@+id/crypto_name"
+        app:layout_constraintEnd_toStartOf="@+id/crypto_price"
+        app:layout_constraintStart_toEndOf="@+id/crypto_name"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/crypto_name"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:paddingStart="25dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/chocolate"
+        android:textStyle="bold"
+        app:cryptoNameString="@{crypto}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bitcoin" />
+
+    <TextView
+        android:id="@+id/crypto_price"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/chocolate"
+        android:textStyle="bold"
+        app:cryptoPriceString="@{crypto}"
+        app:layout_constraintBaseline_toBaselineOf="@+id/crypto_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="$140,150,198,00" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

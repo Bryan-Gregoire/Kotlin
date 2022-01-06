@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_cryptoFragment_to_cryptoDetailFragment"
             app:destination="@id/cryptoDetailFragment" />
+        <action
+            android:id="@+id/action_cryptoFragment_to_cryptoFavoriteFragment"
+            app:destination="@id/cryptoFavoriteFragment" />
     </fragment>
 
     <fragment
@@ -38,6 +41,15 @@
             <argument
                 android:name="cryptoKey"
                 app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cryptoFavoriteFragment"
+        android:name="g53735.mobg5.cryptop.favorite.CryptoFavoriteFragment"
+        android:label="My Favorites Cryptos" >
+        <action
+            android:id="@+id/action_cryptoFavoriteFragment_to_cryptoDetailFragment"
+            app:destination="@id/cryptoDetailFragment" />
     </fragment>
 
 </navigation>

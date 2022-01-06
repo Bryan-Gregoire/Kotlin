@@ -22,7 +22,8 @@ class CryptoFragment : Fragment() {
     ): View? {
 
         val binding: FragmentCryptoBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_crypto, container, false)
+            inflater, R.layout.fragment_crypto, container, false
+        )
 
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -37,6 +38,8 @@ class CryptoFragment : Fragment() {
 
         val adapter = CryptoAdapter(CryptoListener { cryptoId ->
             cryptoViewModel.onCryptoClicked(cryptoId)
+        }, CryptoFavoriteListener { cryptoId ->
+            cryptoViewModel.onFavoriteClicked(cryptoId)
         })
         binding.cryptoList.adapter = adapter
 
@@ -46,11 +49,29 @@ class CryptoFragment : Fragment() {
             }
         })
 
-        cryptoViewModel.navigateToSleepDetail.observe(viewLifecycleOwner, Observer { crypto ->
+        cryptoViewModel.cryptoFavorite.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                cryptoViewModel.onClickFavorite(it)
+            }
+        })
+
+        cryptoViewModel.navigateToCryptoDetail.observe(viewLifecycleOwner, Observer { crypto ->
             crypto?.let {
-                this.findNavController().navigate(CryptoFragmentDirections
-                    .actionCryptoFragmentToCryptoDetailFragment(crypto))
+                this.findNavController().navigate(
+                    CryptoFragmentDirections
+                        .actionCryptoFragmentToCryptoDetailFragment(crypto)
+                )
                 cryptoViewModel.onCryptoDetailNavigated()
+            }
+        })
+
+        cryptoViewModel.navigateToFavoritesCrypto.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                this.findNavController().navigate(
+                    CryptoFragmentDirections
+                        .actionCryptoFragmentToCryptoFavoriteFragment()
+                )
+                cryptoViewModel.doneNavigateToFavorite()
             }
         })
 

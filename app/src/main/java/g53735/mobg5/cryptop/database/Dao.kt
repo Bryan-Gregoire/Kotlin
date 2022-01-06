@@ -38,8 +38,14 @@ abstract class CryptoDatabaseDao : BaseDao<Crypto> {
     @Query("SELECT * FROM crypto_table WHERE cryptoId = :key")
     abstract fun getCrypto(key: Long): LiveData<Crypto>
 
+    @Query("SELECT * FROM crypto_table WHERE cryptoId = :key")
+    abstract suspend fun getFavoriteCrypto(key: Long): Crypto
+
     @Query("SELECT * FROM crypto_table")
     abstract fun getAllCryptos(): LiveData<List<Crypto>>
+
+    @Query("SELECT * FROM crypto_table WHERE favorite = 1")
+    abstract suspend fun getAllFavorites(): List<Crypto>
 
     @Query("SELECT * FROM crypto_table order by rank LIMIT 100")
     abstract fun getTop100Cryptos(): LiveData<List<Crypto>>
@@ -49,4 +55,5 @@ abstract class CryptoDatabaseDao : BaseDao<Crypto> {
 
     @Query("DELETE FROM crypto_table")
     abstract suspend fun clear()
+
 }
